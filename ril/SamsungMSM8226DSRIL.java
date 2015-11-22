@@ -183,7 +183,7 @@ public class SamsungMSM8226DSRIL extends RIL {
             int np = p.readInt();
             dc.numberPresentation = DriverCall.presentationFromCLIP(np);
             dc.name = p.readString();
-            dc.namePresentation = DriverCall.presentationFromCLIP(p.readInt());
+            dc.namePresentation = p.readInt();
             int uusInfoPresent = p.readInt();
             if (uusInfoPresent == 1) {
                 dc.uusInfo = new UUSInfo();
@@ -370,7 +370,7 @@ public class SamsungMSM8226DSRIL extends RIL {
         send(rr);
     }
 
-    private static final int RIL_REQUEST_DIAL_EMERGENCY = 10001;
+    static final int RIL_REQUEST_DIAL_EMERGENCY = 10016;
 
     private void
     dialEmergencyCall(String address, int clirMode, Message result) {
